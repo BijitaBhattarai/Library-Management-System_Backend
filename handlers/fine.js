@@ -11,6 +11,7 @@ import {
   CreateFineValidator,
   UpdateFineValidator,
 } from "../validators/fineValidator.js";
+import { createNotification } from "../services/notification.js";
 
 const FINE_ROUTER = Router();
 FINE_ROUTER.post(
@@ -23,6 +24,12 @@ FINE_ROUTER.post(
         userId: req.user.userId, // taken from JWT
         amount: req.body.amount,
       });
+      await createNotification({
+        userId: req.user.userId,
+        message: `A fine of Rs.${fine.amount} has been applied to your account.`,
+        type: "OVERDUE",
+      });
+
       res.status(201).json({ success: true, fine });
     } catch (error) {
       next(error);
@@ -36,6 +43,11 @@ FINE_ROUTER.patch(
   async (req, res, next) => {
     try {
       const fine = await payFine(req.params.fineId);
+      await createNotification({
+        userId: fine.user, // assuming `fine.user` contains the userId
+        message: `Your fine of Rs.${fine.amount} has been paid successfully.`,
+        type: "SYSTEM",
+      });
       res.status(200).json({ success: true, fine });
     } catch (error) {
       next(error);
