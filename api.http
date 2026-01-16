@@ -1,6 +1,5 @@
 @BASE_URL=http://localhost:3000
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTY4NzA4ZGExNDNkMzg2ZTk5NjJkNGYiLCJpYXQiOjE3Njg0NTIzMDMsImV4cCI6MTc2OTA1NzEwM30.rWJL6tmXq8OevPRlViOZjVwbjx-gP6wXmLqdd3dn8uw
-
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTY5Zjk5MjhjNzRhMDQ1ODYxNDllNGYiLCJpYXQiOjE3Njg1NTI4NjcsImV4cCI6MTc2OTE1NzY2N30.QPveASY6JMZwdly36nqkFd2-9cVDbD-RY6EYUjeGZiY
 ### create new user
 POST {{BASE_URL}}/user
 Content-Type: application/json
@@ -46,7 +45,7 @@ Authorization: Bearer {{TOKEN}}
     
        "name": "Libraryyuuuuuy Bhattarai",
     "role":"USER",
-    "email": "nnnewlibrarytr@gmail.com",
+    "email": "nnnnewlibrarytr@gmail.com",
     "password" : "libraqwqwrybhattt"
    
 
@@ -58,7 +57,7 @@ Content-Type: application/json
 Authorization: Bearer {{TOKEN}}
 
 {
-    "email":"nnnewlibrarytr@gmail.com",
+    "email":"nnnnewlibrarytr@gmail.com",
     "password":"libraqwqwrybhattt"
 }
 
@@ -93,7 +92,7 @@ Content-Type: application/json
 Authorization: Bearer {{TOKEN}}
 
 {
-  "bookId": "695225f866cee76c40709e68",
+  "bookId": "6958b7bc637b85c1de12dda8",
   "dueDate": "2026-01-20T00:00:00Z"
 }
 
@@ -125,11 +124,11 @@ GET {{BASE_URL}}/reservation
 Authorization: Bearer {{TOKEN}}
 
 ### Cancel reservation
-PATCH {{BASE_URL}}/reservation/6958bc97637b85c1de12de04/cancel
+PATCH {{BASE_URL}}/reservation/6969fb84a1f21a36a811e858/cancel
 Authorization: Bearer {{TOKEN}}
 
 ### Get reservation by id
-GET {{BASE_URL}}/reservation/6958bc97637b85c1de12de04
+GET {{BASE_URL}}/reservation/6969fb84a1f21a36a811e858
 Authorization: Bearer {{TOKEN}}
 
 ### create fine

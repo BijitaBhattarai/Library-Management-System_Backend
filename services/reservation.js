@@ -7,6 +7,15 @@ import ConflictError from "../error/conflict-error.js";
  * Create reservation
  */
 export const reserveBook = async ({ userId, bookId }) => {
+  const existing = await Reservation.findOne({
+    user: userId,
+    book: bookId,
+    status: { $ne: "cancelled" },
+  });
+
+  if (existing) {
+    throw new Error("You have already reserved this book.");
+  }
   const book = await Book.findById(bookId);
   if (!book) throw new NotFoundError("Book not found");
 
@@ -42,7 +51,7 @@ export const cancelReservation = async (reservationId) => {
     throw new NotFoundError("Reservation not found");
   }
 
-  if (reservation.status !== "ACTIVE") {
+  if (reservation.status === "CANCELLED" || reservation.status === "NOTIFIED") {
     throw new ConflictError("Reservation already cancelled or fulfilled");
   }
 
