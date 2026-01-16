@@ -1,0 +1,162 @@
+@BASE_URL=http://localhost:3000
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTY4NzA4ZGExNDNkMzg2ZTk5NjJkNGYiLCJpYXQiOjE3Njg0NTIzMDMsImV4cCI6MTc2OTA1NzEwM30.rWJL6tmXq8OevPRlViOZjVwbjx-gP6wXmLqdd3dn8uw
+
+### create new user
+POST {{BASE_URL}}/user
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    "role":"USER",
+    "name": "Bijita library",
+    "email": "bijitta@gmail.com",
+    "password" : "heavenlyoi"
+   
+}
+
+
+### Get all users
+GET {{BASE_URL}}/user
+Authorization: Bearer {{TOKEN}}
+ 
+### Get user by id
+GET {{BASE_URL}}/user/6958ba0f637b85c1de12ddcd
+Authorization: Bearer {{TOKEN}}
+
+### Update user by id
+PATCH {{BASE_URL}}/user/6968bc7b1e788df8985a3952
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+ {
+     "name": "Bijita libraary",
+     "email": "bijb@gmail.com"
+}
+
+### Delete user by id
+DELETE {{BASE_URL}}/user/6968bc7b1e788df8985a3952
+Authorization: Bearer {{TOKEN}}
+
+### Register a new user
+POST {{BASE_URL}}/auth/register
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    
+       "name": "Libraryyuuuuuy Bhattarai",
+    "role":"USER",
+    "email": "nnnewlibrarytr@gmail.com",
+    "password" : "libraqwqwrybhattt"
+   
+
+}
+
+### Login a user
+POST {{BASE_URL}}/auth/login
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+    "email":"nnnewlibrarytr@gmail.com",
+    "password":"libraqwqwrybhattt"
+}
+
+
+### create Book
+POST {{BASE_URL}}/book
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "title": "Introduction to Database",
+  "author": "Thomas H. Cormen",
+  "ISBN": "9780262033840",
+  "category": "Computer Science",
+  "description": "Classic CS textbook",
+  "totalCopies": 3,
+  "availableCopies": 3
+}
+
+### get all books
+GET {{BASE_URL}}/book
+Authorization: Bearer {{TOKEN}}
+
+
+### get book by id
+GET {{BASE_URL}}/book/6958b7bc637b85c1de12dda8
+Authorization: Bearer {{TOKEN}}
+
+### Issue a Book
+POST {{BASE_URL}}/issues
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "bookId": "695225f866cee76c40709e68",
+  "dueDate": "2026-01-20T00:00:00Z"
+}
+
+
+### Get all issues
+GET {{BASE_URL}}/issues
+Authorization: Bearer {{TOKEN}}
+
+
+### Get issue by id
+GET {{BASE_URL}}/issues/6958b802637b85c1de12ddad
+Authorization: Bearer {{TOKEN}}
+
+### Return a book
+PATCH {{BASE_URL}}/issues/6958b912637b85c1de12ddc7/return
+Authorization: Bearer {{TOKEN}}
+
+### Reserve a Book
+POST {{BASE_URL}}/reservation
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "bookId": "6958b7bc637b85c1de12dda8"
+}
+
+### Get all reservation
+GET {{BASE_URL}}/reservation
+Authorization: Bearer {{TOKEN}}
+
+### Cancel reservation
+PATCH {{BASE_URL}}/reservation/6958bc97637b85c1de12de04/cancel
+Authorization: Bearer {{TOKEN}}
+
+### Get reservation by id
+GET {{BASE_URL}}/reservation/6958bc97637b85c1de12de04
+Authorization: Bearer {{TOKEN}}
+
+### create fine
+POST {{BASE_URL}}/fine
+Content-Type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "issueId": "6958b912637b85c1de12ddc7",
+  "amount": 50
+}
+
+
+### get all fine
+GET {{BASE_URL}}/fine
+Authorization: Bearer {{TOKEN}}
+
+### get fine by id
+GET {{BASE_URL}}/fine/64f1e7a1b8d9e1a987654999
+Authorization: Bearer {{TOKEN}}
+
+
+###  Pay Fine
+PATCH {{BASE_URL}}/fine/64f1e7a1b8d9e1a987654999/pay
+Authorization: Bearer {{TOKEN}}
+
+### delete fine
+DELETE {{BASE_URL}}/fine/64f1e7a1b8d9e1a987654999
+Authorization: Bearer {{TOKEN}}
+
